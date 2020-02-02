@@ -1,6 +1,6 @@
-add_executable(bottomlessBagTest bottomlessBagTest.cpp)
-add_executable(sandArrangementTest sandArrangementTest.cpp)
-add_executable(crystalSelectionTest crystalSelectionTest.cpp)
+add_executable(bottomlessBagTest bottomlessBagTest.cpp ../LonesomeAdventure.cc ../TeamAdventure.cc)
+add_executable(sandArrangementTest sandArrangementTest.cpp ../LonesomeAdventure.cc ../TeamAdventure.cc)
+add_executable(crystalSelectionTest crystalSelectionTest.cpp ../LonesomeAdventure.cc ../TeamAdventure.cc)
 
 
 target_link_libraries( bottomlessBagTest pthread )

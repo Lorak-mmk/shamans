@@ -7,37 +7,27 @@
 #include "../third_party/threadpool/threadpool.h"
 
 #include "./types.h"
-#include "./utils.h"
 
 class Adventure {
  public:
   virtual ~Adventure() = default;
 
-  virtual uint64_t packEggs(std::vector<Egg> eggs, BottomlessBag& bag) = 0;
+  virtual uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag) = 0;
 
   virtual void arrangeSand(std::vector<GrainOfSand>& grains) = 0;
 
-  virtual Crystal selectBestCrystal(std::vector<Crystal>& crystals) = 0;
+  virtual Crystal selectBestCrystal(const std::vector<Crystal>& crystals) = 0;
 };
 
 class LonesomeAdventure : public Adventure {
  public:
   LonesomeAdventure() {}
 
-  virtual uint64_t packEggs(std::vector<Egg> eggs, BottomlessBag& bag) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-  }
+  virtual uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag);
 
-  virtual void arrangeSand(std::vector<GrainOfSand>& grains) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-  }
+  virtual void arrangeSand(std::vector<GrainOfSand>& grains);
 
-  virtual Crystal selectBestCrystal(std::vector<Crystal>& crystals) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-  }
+  virtual Crystal selectBestCrystal(const std::vector<Crystal>& crystals);
 };
 
 class TeamAdventure : public Adventure {
@@ -46,21 +36,11 @@ class TeamAdventure : public Adventure {
       : numberOfShamans(numberOfShamansArg),
         councilOfShamans(numberOfShamansArg) {}
 
-  uint64_t packEggs(std::vector<Egg> eggs, BottomlessBag& bag) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-    (void) numberOfShamans;
-  }
+  uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag);
 
-  virtual void arrangeSand(std::vector<GrainOfSand>& grains) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-  }
+  virtual void arrangeSand(std::vector<GrainOfSand>& grains);
 
-  virtual Crystal selectBestCrystal(std::vector<Crystal>& crystals) {
-    // TODO Implement this method
-    throw std::runtime_error("Not implemented");
-  }
+  virtual Crystal selectBestCrystal(const std::vector<Crystal>& crystals);
 
  private:
   uint64_t numberOfShamans;

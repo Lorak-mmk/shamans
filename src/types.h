@@ -3,9 +3,7 @@
 
 #include <vector>
 
-#include "./utils.h"
-
-void burden(uint64_t left, uint64_t right) {
+static void burden(uint64_t left, uint64_t right) {
   volatile uint64_t a = 0;
   for (int i = 0; i < 100; ++i) {
     a += (3 * a - left * 44) + (right / (left == 0 ? 1 : left) + 8);
@@ -17,8 +15,8 @@ class Egg {
   Egg(uint64_t sizeArg, uint64_t weightArg)
       : size(sizeArg), weight(weightArg) {}
 
-  uint64_t getSize() { return this->size; }
-  uint64_t getWeight() {
+  uint64_t getSize() const { return this->size; }
+  uint64_t getWeight() const {
     burden(this->size, this->weight);
     return this->weight;
   }
@@ -63,7 +61,7 @@ class Crystal {
     return this->shininess < other.shininess;
   }
 
-  bool operator==(Crystal const& other) {
+  bool operator==(Crystal const& other) const {
     return this->shininess == other.shininess;
   }
 
@@ -80,7 +78,7 @@ class BottomlessBag {
  public:
   explicit BottomlessBag(uint64_t capacityArg) : capacity(capacityArg) {}
 
-  uint64_t getCapacity() { return this->capacity; }
+  uint64_t getCapacity() const { return this->capacity; }
 
   void addEgg(Egg const& egg) { this->eggs.push_back(egg); }
 
