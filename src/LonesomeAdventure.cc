@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "adventure.h"
 
 template<class iterator>
@@ -43,6 +44,10 @@ uint64_t LonesomeAdventure::packEggs(const std::vector<Egg>& eggs, BottomlessBag
     for(size_t i = 1; i < (eggs.size() + 1); i++) {
         tab[i] = tab[i - 1] + (bag.getCapacity() + 1);
     }
+    for(size_t i = 0; i <= bag.getCapacity(); i++) {
+        tab[0][i] = 0;
+    }
+
     for(size_t i = 1; i <= eggs.size(); i++) {
         auto& egg = eggs[i - 1];
         for (size_t w = 0; w <= bag.getCapacity(); w++) {
@@ -54,7 +59,20 @@ uint64_t LonesomeAdventure::packEggs(const std::vector<Egg>& eggs, BottomlessBag
         }
     }
 
-    return tab[eggs.size()][bag.getCapacity()];
+    size_t idx = bag.getCapacity();
+    for(size_t i = eggs.size(); i > 0; i--) {
+        if (tab[i][idx] != tab[i - 1][idx]) {
+            auto& egg = eggs[i - 1];
+            idx -= egg.getSize();
+            bag.addEgg(egg);
+        }
+    }
+
+    uint64_t result = tab[eggs.size()][bag.getCapacity()];
+    delete[] tab[0];
+    delete[] tab;
+
+    return result;
 }
 
 void LonesomeAdventure::arrangeSand(std::vector<GrainOfSand>& grains) {

@@ -82,7 +82,7 @@ class BottomlessBag {
 
   void addEgg(Egg const& egg) { this->eggs.push_back(egg); }
 
- private:
+ public:
   std::vector<Egg> eggs;
 
   uint64_t capacity;
