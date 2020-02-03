@@ -1,6 +1,7 @@
 #ifndef SRC_TYPES_H_
 #define SRC_TYPES_H_
 
+#include <cstdint>
 #include <vector>
 
 static void burden(uint64_t left, uint64_t right) {

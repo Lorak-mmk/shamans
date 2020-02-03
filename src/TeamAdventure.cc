@@ -6,19 +6,30 @@
 constexpr size_t CACHE_LINE = 64;
 
 template <typename T>
+std::vector<std::pair<size_t, size_t>> toEqualParts(T *array, size_t N,
+												   size_t threads) {
+	std::vector<std::pair<size_t, size_t>> result;
+	size_t part_size = N / threads;
+	size_t remainder = N - part_size * threads;
+	for (size_t start = 0, end = part_size; start < N;
+		 start = end, end = start + part_size) {
+		if (remainder) {
+			end++;
+			remainder--;
+		}
+		result.emplace_back(start, end);
+	}
+
+	return result;
+}
+
+template <typename T>
 std::vector<std::pair<size_t, size_t>> divideArray(T *array, size_t N,
                                                    size_t threads) {
-  std::vector<std::pair<size_t, size_t>> result;
-  size_t part_size = N / threads;
-  size_t remainder = N - part_size * threads;
-  for (size_t start = 0, end = part_size; start < N;
-       start = end, end = start + part_size) {
-    if (remainder) {
-      end++;
-      remainder--;
-    }
-    result.emplace_back(start, end);
+  if(CACHE_LINE % sizeof(T)) {
+  	return toEqualParts(array, N, threads);
   }
+
 
   return result;
 }
