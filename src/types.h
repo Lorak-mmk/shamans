@@ -41,7 +41,7 @@ class GrainOfSand {
     return this->size == other.size;
   }
 
-  GrainOfSand& operator=(GrainOfSand const& other) {
+  GrainOfSand operator=(GrainOfSand const& other) {
     this->size = other.size;
     return *this;
   }
@@ -65,7 +65,7 @@ class Crystal {
     return this->shininess == other.shininess;
   }
 
-  Crystal& operator=(Crystal const& other) {
+  Crystal operator=(Crystal const& other) {
     this->shininess = other.shininess;
     return *this;
   }

@@ -143,6 +143,10 @@ class mergeInfo {
     return tab;
   }
 
+  static void deleteTree(mergeInfo *tab) {
+  	delete[] tab;
+  }
+
   std::atomic<uint8_t> childrenReady{0};
   bool unused = false, ready = false;
   mergeInfo *parent = nullptr, *left = nullptr, *right = nullptr;
@@ -201,6 +205,8 @@ void TeamAdventure::arrangeSand(std::vector<GrainOfSand> &grains) {
   }
   cv.wait(lk, [tree] { return tree[1].ready; });
   lk.unlock();
+
+  mergeInfo::deleteTree(tree);
 }
 
 Crystal TeamAdventure::selectBestCrystal(const std::vector<Crystal> &crystals) {
