@@ -21,13 +21,13 @@ class Adventure {
 
 class LonesomeAdventure : public Adventure {
  public:
-  LonesomeAdventure() {}
+  LonesomeAdventure() = default;
 
-  virtual uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag);
+  uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag) override;
 
-  virtual void arrangeSand(std::vector<GrainOfSand>& grains);
+  void arrangeSand(std::vector<GrainOfSand>& grains) override;
 
-  virtual Crystal selectBestCrystal(const std::vector<Crystal>& crystals);
+  Crystal selectBestCrystal(const std::vector<Crystal>& crystals) override;
 };
 
 class TeamAdventure : public Adventure {
@@ -36,11 +36,11 @@ class TeamAdventure : public Adventure {
       : numberOfShamans(numberOfShamansArg),
         councilOfShamans(numberOfShamansArg) {}
 
-  uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag);
+  uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag) override;
 
-  virtual void arrangeSand(std::vector<GrainOfSand>& grains);
+  void arrangeSand(std::vector<GrainOfSand>& grains) override;
 
-  virtual Crystal selectBestCrystal(const std::vector<Crystal>& crystals);
+  Crystal selectBestCrystal(const std::vector<Crystal>& crystals) override;
 
  private:
   uint64_t numberOfShamans;

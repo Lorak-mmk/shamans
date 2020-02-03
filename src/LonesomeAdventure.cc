@@ -1,5 +1,3 @@
-#include <assert.h>
-
 #include "adventure.h"
 
 template <class iterator>

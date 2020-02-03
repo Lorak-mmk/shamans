@@ -15,8 +15,8 @@ class Egg {
   Egg(uint64_t sizeArg, uint64_t weightArg)
       : size(sizeArg), weight(weightArg) {}
 
-  uint64_t getSize() const { return this->size; }
-  uint64_t getWeight() const {
+  [[nodiscard]] uint64_t getSize() const { return this->size; }
+  [[nodiscard]] uint64_t getWeight() const {
     burden(this->size, this->weight);
     return this->weight;
   }
@@ -41,7 +41,7 @@ class GrainOfSand {
     return this->size == other.size;
   }
 
-  GrainOfSand operator=(GrainOfSand const& other) {
+  GrainOfSand& operator=(GrainOfSand const& other) {
     this->size = other.size;
     return *this;
   }
@@ -65,7 +65,7 @@ class Crystal {
     return this->shininess == other.shininess;
   }
 
-  Crystal operator=(Crystal const& other) {
+  Crystal& operator=(Crystal const& other) {
     this->shininess = other.shininess;
     return *this;
   }
@@ -78,7 +78,7 @@ class BottomlessBag {
  public:
   explicit BottomlessBag(uint64_t capacityArg) : capacity(capacityArg) {}
 
-  uint64_t getCapacity() const { return this->capacity; }
+  [[nodiscard]] uint64_t getCapacity() const { return this->capacity; }
 
   void addEgg(Egg const& egg) { this->eggs.push_back(egg); }
 
