@@ -29,8 +29,7 @@ std::vector<std::pair<size_t, size_t>> divideArray(T *array, size_t N,
   if(CACHE_LINE % sizeof(T)) {
   	return toEqualParts(array, N, threads);
   }
-
-
+  auto result = toEqualParts(array, N, threads);
   return result;
 }
 
