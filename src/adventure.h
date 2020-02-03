@@ -5,14 +5,14 @@
 #include <vector>
 
 #include "../third_party/threadpool/threadpool.h"
-
 #include "./types.h"
 
 class Adventure {
  public:
   virtual ~Adventure() = default;
 
-  virtual uint64_t packEggs(const std::vector<Egg>& eggs, BottomlessBag& bag) = 0;
+  virtual uint64_t packEggs(const std::vector<Egg>& eggs,
+                            BottomlessBag& bag) = 0;
 
   virtual void arrangeSand(std::vector<GrainOfSand>& grains) = 0;
 
