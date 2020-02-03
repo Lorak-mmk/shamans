@@ -1,5 +1,5 @@
-#ifndef TURNSTILES_MERGESORT_H
-#define TURNSTILES_MERGESORT_H
+#ifndef SRC_MERGESORT_H_
+#define SRC_MERGESORT_H_
 
 #include <algorithm>
 
@@ -41,4 +41,4 @@ static void mergeSortSingle(iterator begin, iterator end,
   merge(begin, s, n - s, tmp);
 }
 
-#endif  // TURNSTILES_MERGESORT_H
+#endif  // SRC_MERGESORT_H_
